@@ -98,6 +98,10 @@
     .nicho-psico   { background: rgba(139,92,246,.15); color: #A78BFA; border: 1px solid rgba(139,92,246,.3); }
     .nicho-medico  { background: rgba(59,130,246,.15);  color: #60A5FA; border: 1px solid rgba(59,130,246,.3); }
     .nicho-salao   { background: rgba(236,72,153,.15);  color: #F472B6; border: 1px solid rgba(236,72,153,.3); }
+    .nicho-escola  { background: rgba(245,158,11,.15);  color: #FCD34D; border: 1px solid rgba(245,158,11,.3); }
+    .nicho-academia{ background: rgba(16,185,129,.15);  color: #34D399; border: 1px solid rgba(16,185,129,.3); }
+    .nicho-odonto  { background: rgba(14,165,233,.15);  color: #38BDF8; border: 1px solid rgba(14,165,233,.3); }
+    .nicho-contabil{ background: rgba(251,146,60,.15);  color: #FB923C; border: 1px solid rgba(251,146,60,.3); }
 
     .contact-links { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .contact-btn {
@@ -221,6 +225,10 @@
     <button class="filter-btn" onclick="setFilter('Psicólogo / Terapeuta', this)">🧠 Psicólogos</button>
     <button class="filter-btn" onclick="setFilter('Médico / Clínica', this)">🏥 Médicos</button>
     <button class="filter-btn" onclick="setFilter('Salão / Estética', this)">💇 Salões</button>
+    <button class="filter-btn" onclick="setFilter('Escola Particular', this)">🏫 Escolas</button>
+    <button class="filter-btn" onclick="setFilter('Academia / CrossFit', this)">💪 Academias</button>
+    <button class="filter-btn" onclick="setFilter('Odontologia', this)">🦷 Odonto</button>
+    <button class="filter-btn" onclick="setFilter('Contabilidade', this)">📊 Contábeis</button>
     <button class="add-btn" onclick="openModal()">+ Adicionar Lead</button>
   </div>
 
@@ -256,6 +264,10 @@
         <option>Psicólogo / Terapeuta</option>
         <option>Médico / Clínica</option>
         <option>Salão / Estética</option>
+        <option>Escola Particular</option>
+        <option>Academia / CrossFit</option>
+        <option>Odontologia</option>
+        <option>Contabilidade</option>
       </select>
     </div>
     <div class="form-group"><label>WhatsApp</label><input id="f-wa" placeholder="71 9XXXX-XXXX" /></div>
@@ -272,7 +284,15 @@
 <script>
 const STATUS_OPTS = ['A prospectar','Contatado','Interessado','Fechado','Sem interesse'];
 const STATUS_COLOR = { 'A prospectar':'#8A90A2','Contatado':'#3B82F6','Interessado':'#F59E0B','Fechado':'#2ECC71','Sem interesse':'#EF4444' };
-const NICHO_CLASS = { 'Psicólogo / Terapeuta':'nicho-psico','Médico / Clínica':'nicho-medico','Salão / Estética':'nicho-salao' };
+const NICHO_CLASS = {
+  'Psicólogo / Terapeuta':'nicho-psico',
+  'Médico / Clínica':'nicho-medico',
+  'Salão / Estética':'nicho-salao',
+  'Escola Particular':'nicho-escola',
+  'Academia / CrossFit':'nicho-academia',
+  'Odontologia':'nicho-odonto',
+  'Contabilidade':'nicho-contabil',
+};
 
 const DEFAULT_DATA = [
   // PSICÓLOGOS
@@ -290,6 +310,29 @@ const DEFAULT_DATA = [
   { id:10, nome:'Salão Beauty Bahia', nicho:'Salão / Estética', wa:'71988673755', tel:'', site:'', end:'Salvador, BA', status:'A prospectar', notas:'' },
   { id:11, nome:'Jacques Janine — Salvador Shopping', nicho:'Salão / Estética', wa:'71988070303', tel:'7133418224', site:'https://jacquesjanine.com.br', end:'Av. Tancredo Neves — Caminho das Árvores', status:'A prospectar', notas:'' },
   { id:12, nome:'Templo Salão de Beleza e Estética', nicho:'Salão / Estética', wa:'557141031542', tel:'7141031542', site:'', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  // ESCOLAS PARTICULARES
+  { id:13, nome:'Colégio Intelectos', nicho:'Escola Particular', wa:'71991066209', tel:'7134125270', site:'https://colegiointelectos.com.br', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  { id:14, nome:'Colégio PHD', nicho:'Escola Particular', wa:'', tel:'7133452000', site:'', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  { id:15, nome:'Colégio Bernoulli Salvador', nicho:'Escola Particular', wa:'', tel:'', site:'', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  // ACADEMIAS / CROSSFIT
+  { id:16, nome:'Alcateia CrossFit', nicho:'Academia / CrossFit', wa:'', tel:'7133417129', site:'', end:'Rua das Rosas, 238 — Pituba', status:'A prospectar', notas:'' },
+  { id:17, nome:'STM CrossFit', nicho:'Academia / CrossFit', wa:'', tel:'7130362847', site:'', end:'Alameda Praia do Flamengo, 2591 — Stella Maris', status:'A prospectar', notas:'' },
+  { id:18, nome:'CrossFit Barra', nicho:'Academia / CrossFit', wa:'', tel:'', site:'https://crossfitbarra.wixsite.com/crossfit', end:'Av. Vasco da Gama — Barra', status:'A prospectar', notas:'Site no Wix — ótima oportunidade!' },
+  { id:19, nome:'Selfit Academia', nicho:'Academia / CrossFit', wa:'', tel:'', site:'https://academiasselfit.com.br', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  // ODONTOLOGIA
+  { id:20, nome:'OdontoCompany — Centro', nicho:'Odontologia', wa:'71993132284', tel:'7133213467', site:'https://odontocompany.com/salvadorcentro', end:'Salvador Centro', status:'A prospectar', notas:'' },
+  { id:21, nome:'Hospital Odontológico (HOE)', nicho:'Odontologia', wa:'', tel:'', site:'https://hospitalodontologico.com.br', end:'Pituba / Shopping Paralela', status:'A prospectar', notas:'' },
+  { id:22, nome:'Clínica Apollo Odontologia', nicho:'Odontologia', wa:'', tel:'', site:'https://clinicaapollo.com.br', end:'Av. Tancredo Neves', status:'A prospectar', notas:'' },
+  { id:23, nome:'Clean 24h — Clínica Odontológica', nicho:'Odontologia', wa:'', tel:'7133518076', site:'https://clean24h.com.br', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  { id:24, nome:'ODENTISTA — Clínica Odontológica', nicho:'Odontologia', wa:'', tel:'', site:'https://odentistabrasil.com.br', end:'Rua da Grécia, 165 — Comércio', status:'A prospectar', notas:'' },
+  { id:25, nome:'Sorria Bahia Odontologia', nicho:'Odontologia', wa:'', tel:'7130330728', site:'', end:'Cajazeiras X, Salvador', status:'A prospectar', notas:'' },
+  // CONTABILIDADE
+  { id:26, nome:'ELB Contabilidade', nicho:'Contabilidade', wa:'', tel:'', site:'https://elbcontabilidade.com', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  { id:27, nome:'Consil Soluções Contábeis', nicho:'Contabilidade', wa:'71991022576', tel:'', site:'https://consilsolucoes.com.br', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  { id:28, nome:'Contabiliza Bahia', nicho:'Contabilidade', wa:'', tel:'', site:'https://contabilizabahia.com.br', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  { id:29, nome:'NEO Contabilidade Consultiva', nicho:'Contabilidade', wa:'', tel:'', site:'https://neocontabilidadeconsultiva.com.br', end:'Salvador, BA', status:'A prospectar', notas:'' },
+  { id:30, nome:'Trilha Assessoria Contábil', nicho:'Contabilidade', wa:'', tel:'7132411383', site:'https://bahiacontabilidade.com.br', end:'Av. Tancredo Neves, 939', status:'A prospectar', notas:'' },
+  { id:31, nome:'Passos e Fernandes Contabilidade', nicho:'Contabilidade', wa:'', tel:'', site:'https://passosefernandes.com.br', end:'Rua da Ajuda, 01 — Centro', status:'A prospectar', notas:'' },
 ];
 
 let leads = JSON.parse(localStorage.getItem('prospects_v1')) || DEFAULT_DATA;
