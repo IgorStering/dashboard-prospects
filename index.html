@@ -158,9 +158,47 @@
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       table { display: block; overflow-x: auto; }
     }
+    /* ── LOGIN ── */
+    #loginOverlay {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .login-box {
+      background: var(--bg2); border: 1px solid rgba(201,168,76,.2);
+      border-radius: 20px; padding: 48px 40px; width: 100%; max-width: 380px;
+      text-align: center;
+    }
+    .login-logo { font-size: 1.3rem; font-weight: 700; color: var(--gold); margin-bottom: 8px; }
+    .login-sub  { color: var(--gray); font-size: .85rem; margin-bottom: 32px; }
+    .login-box input {
+      width: 100%; background: var(--bg3); border: 1px solid rgba(255,255,255,.1);
+      color: var(--white); font-family: 'Inter', sans-serif; font-size: 1rem;
+      padding: 13px 16px; border-radius: 10px; outline: none; text-align: center;
+      letter-spacing: 3px; margin-bottom: 12px; transition: border-color .2s;
+    }
+    .login-box input:focus { border-color: var(--gold); }
+    .login-btn {
+      width: 100%; background: var(--gold); color: var(--bg);
+      font-weight: 700; font-size: 1rem; padding: 13px;
+      border-radius: 10px; border: none; cursor: pointer; transition: background .2s;
+    }
+    .login-btn:hover { background: var(--gold2); }
+    .login-error { color: var(--red); font-size: .82rem; margin-top: 10px; display: none; }
   </style>
 </head>
 <body>
+
+<!-- LOGIN -->
+<div id="loginOverlay">
+  <div class="login-box">
+    <div class="login-logo">🔒 Dashboard</div>
+    <div class="login-sub">Prospecção — Salvador, BA</div>
+    <input type="password" id="pwdInput" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkLogin()" />
+    <button class="login-btn" onclick="checkLogin()">Entrar</button>
+    <div class="login-error" id="loginError">Senha incorreta. Tente novamente.</div>
+  </div>
+</div>
 
 <header>
   <div>
@@ -364,6 +402,28 @@ function saveModal() {
 document.getElementById('modalOverlay').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
 
 renderTable();
+
+// ── AUTH ──
+const PWD_HASH = 'f77911f675dc4ab494304ed1de18f2e67dbe4982dfacffefbd4d2ac3cabd8b82';
+async function hash(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function checkLogin() {
+  const val = document.getElementById('pwdInput').value;
+  const h = await hash(val);
+  if (h === PWD_HASH) {
+    sessionStorage.setItem('dash_auth', '1');
+    document.getElementById('loginOverlay').style.display = 'none';
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+    document.getElementById('pwdInput').value = '';
+    document.getElementById('pwdInput').focus();
+  }
+}
+if (sessionStorage.getItem('dash_auth') === '1') {
+  document.getElementById('loginOverlay').style.display = 'none';
+}
 </script>
 </body>
 </html>
