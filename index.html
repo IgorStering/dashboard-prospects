@@ -102,6 +102,7 @@
     .nicho-academia{ background: rgba(16,185,129,.15);  color: #34D399; border: 1px solid rgba(16,185,129,.3); }
     .nicho-odonto  { background: rgba(14,165,233,.15);  color: #38BDF8; border: 1px solid rgba(14,165,233,.3); }
     .nicho-contabil{ background: rgba(251,146,60,.15);  color: #FB923C; border: 1px solid rgba(251,146,60,.3); }
+    .nicho-barber  { background: rgba(168,85,247,.15);  color: #C084FC; border: 1px solid rgba(168,85,247,.3); }
 
     .contact-links { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .contact-btn {
@@ -229,6 +230,7 @@
     <button class="filter-btn" onclick="setFilter('Academia / CrossFit', this)">💪 Academias</button>
     <button class="filter-btn" onclick="setFilter('Odontologia', this)">🦷 Odonto</button>
     <button class="filter-btn" onclick="setFilter('Contabilidade', this)">📊 Contábeis</button>
+    <button class="filter-btn" onclick="setFilter('Barbearia', this)">✂️ Barbearias</button>
     <button class="add-btn" onclick="openModal()">+ Adicionar Lead</button>
   </div>
 
@@ -268,6 +270,7 @@
         <option>Academia / CrossFit</option>
         <option>Odontologia</option>
         <option>Contabilidade</option>
+        <option>Barbearia</option>
       </select>
     </div>
     <div class="form-group"><label>WhatsApp</label><input id="f-wa" placeholder="71 9XXXX-XXXX" /></div>
@@ -292,6 +295,7 @@ const NICHO_CLASS = {
   'Academia / CrossFit':'nicho-academia',
   'Odontologia':'nicho-odonto',
   'Contabilidade':'nicho-contabil',
+  'Barbearia':'nicho-barber',
 };
 
 const DEFAULT_DATA = [
@@ -473,28 +477,6 @@ const DEFAULT_DATA = [
   },
   {
     "id": 17,
-    "nome": "CLIDAL Corpore - Centro Médico Bela Vista",
-    "nicho": "Médico / Clínica",
-    "wa": "557139011200",
-    "tel": "(71) 3901-1200",
-    "site": "http://www.centromedicobelavista.com.br",
-    "end": "Alameda Euvaldo Luz, 92 Piso L2 - Shopping Bela Vista - Pernambués, Salvador - BA, 41098-020",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 18,
-    "nome": "CMC Consultórios Médicos do Centro",
-    "nicho": "Médico / Clínica",
-    "wa": "557133215900",
-    "tel": "(71) 3321-5900",
-    "site": "https://www.cmcconsultorios.com.br",
-    "end": "Av. Joana Angélica, 231 - Joana Angélica, Salvador - BA, 40050-001",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 19,
     "nome": "Centro Médico HBA",
     "nicho": "Médico / Clínica",
     "wa": "557121092000",
@@ -505,13 +487,35 @@ const DEFAULT_DATA = [
     "notas": ""
   },
   {
-    "id": 20,
+    "id": 18,
+    "nome": "CLIDAL Corpore - Centro Médico Bela Vista",
+    "nicho": "Médico / Clínica",
+    "wa": "557139011200",
+    "tel": "(71) 3901-1200",
+    "site": "http://www.centromedicobelavista.com.br",
+    "end": "Alameda Euvaldo Luz, 92 Piso L2 - Shopping Bela Vista - Pernambués, Salvador - BA, 41098-020",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 19,
     "nome": "Centro Médico Bela Vista",
     "nicho": "Médico / Clínica",
     "wa": "557139011200",
     "tel": "(71) 3901-1200",
     "site": "https://www.centromedicobelavista.com.br",
     "end": "Shopping Bela Vista - Alameda Euvaldo Luz, 92 - PISO L2 - Pernambués, Salvador - BA, 41098-020",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 20,
+    "nome": "Consultório médico Dra. Caroline Miranda",
+    "nicho": "Médico / Clínica",
+    "wa": "5571991834116",
+    "tel": "(71) 99183-4116",
+    "site": "https://www.carolinemiranda.com",
+    "end": "Consultório Dra Caroline Miranda - Costa Azul, Salvador - BA, 41760-050",
     "status": "A prospectar",
     "notas": ""
   },
@@ -539,17 +543,6 @@ const DEFAULT_DATA = [
   },
   {
     "id": 23,
-    "nome": "Rituale Beleza e Estética",
-    "nicho": "Salão / Estética",
-    "wa": "557130114774",
-    "tel": "(71) 3011-4774",
-    "site": "https://www.ritualebeleza.com.br",
-    "end": "Empresarial Itaigara - Rua Rubens Guelli, 134 - loja 02, Ed - Itaigara, Salvador - BA, 41815-135",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 24,
     "nome": "Paula Amorim Beleza & Estética - Salão de Beleza em Salvador",
     "nicho": "Salão / Estética",
     "wa": "557135067222",
@@ -560,18 +553,18 @@ const DEFAULT_DATA = [
     "notas": ""
   },
   {
-    "id": 25,
-    "nome": "Maria Penteada Beleza e Estética",
+    "id": 24,
+    "nome": "Rituale Beleza e Estética",
     "nicho": "Salão / Estética",
-    "wa": "5571996721666",
-    "tel": "(71) 99672-1666",
-    "site": "https://www.instagram.com/_mariapenteada",
-    "end": "Alameda dos Umbuzeiros, 473 - Caminho das Árvores, Salvador - BA, 41820-680",
+    "wa": "557130114774",
+    "tel": "(71) 3011-4774",
+    "site": "https://www.ritualebeleza.com.br",
+    "end": "Empresarial Itaigara - Rua Rubens Guelli, 134 - loja 02, Ed - Itaigara, Salvador - BA, 41815-135",
     "status": "A prospectar",
     "notas": ""
   },
   {
-    "id": 26,
+    "id": 25,
     "nome": "Escritório da Beleza Hair spa",
     "nicho": "Salão / Estética",
     "wa": "557134801000",
@@ -582,18 +575,7 @@ const DEFAULT_DATA = [
     "notas": ""
   },
   {
-    "id": 27,
-    "nome": "Cesar Beauty Studio- salão de beleza em salvador",
-    "nicho": "Salão / Estética",
-    "wa": "5571991765696",
-    "tel": "(71) 99176-5696",
-    "site": "https://www.trinks.com/cesar-beauty-studio",
-    "end": "Alameda das Algarobas, 520 - Caminho das Árvores, Salvador - BA, 41820-500",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 28,
+    "id": 26,
     "nome": "Ju Vellanes | Saúde Estética | Beleza | Bem-estar",
     "nicho": "Salão / Estética",
     "wa": "5571999666705",
@@ -604,7 +586,18 @@ const DEFAULT_DATA = [
     "notas": "⚠ Sem site — boa oportunidade!"
   },
   {
-    "id": 29,
+    "id": 27,
+    "nome": "Maria Penteada Beleza e Estética",
+    "nicho": "Salão / Estética",
+    "wa": "5571996721666",
+    "tel": "(71) 99672-1666",
+    "site": "https://www.instagram.com/_mariapenteada",
+    "end": "Alameda dos Umbuzeiros, 473 - Caminho das Árvores, Salvador - BA, 41820-680",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 28,
     "nome": "Clinica Vida e Beleza - Estética Avançada em Salvador",
     "nicho": "Salão / Estética",
     "wa": "5571999431212",
@@ -615,13 +608,24 @@ const DEFAULT_DATA = [
     "notas": ""
   },
   {
-    "id": 30,
+    "id": 29,
     "nome": "Clínica de Estética Avançada - Dra. Alessandra Araújo",
     "nicho": "Salão / Estética",
     "wa": "5571992301216",
     "tel": "(71) 99230-1216",
     "site": "",
     "end": "| Atlanta Empresarial - R. Dr. José Peroba, 297 - STIEP, Salvador - BA, 41770-235",
+    "status": "A prospectar",
+    "notas": "⚠ Sem site — boa oportunidade!"
+  },
+  {
+    "id": 30,
+    "nome": "La Lucce Espaço De Beleza",
+    "nicho": "Salão / Estética",
+    "wa": "557134511400",
+    "tel": "(71) 3451-1400",
+    "site": "",
+    "end": "Alameda das Carolinas, 09 - primeiro andar - Caminho das Árvores, Salvador - BA, 41820-510",
     "status": "A prospectar",
     "notas": "⚠ Sem site — boa oportunidade!"
   },
@@ -638,23 +642,23 @@ const DEFAULT_DATA = [
   },
   {
     "id": 32,
-    "nome": "Escola Recanto de Fadas | Educação Infantil, Fundamental I e Bilíngue em Pituba, Salvador BA",
-    "nicho": "Escola Particular",
-    "wa": "5571991157175",
-    "tel": "(71) 99115-7175",
-    "site": "http://recantodefadas.com.br",
-    "end": "R. dos Radialistas, 85 - Pituba, Salvador - BA, 41820-110",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 33,
     "nome": "Colégio Módulo",
     "nicho": "Escola Particular",
     "wa": "557121021300",
     "tel": "(71) 2102-1300",
     "site": "http://www.portalmodulo.com.br",
     "end": "Av. Prof. Magalhães Neto, 1177 - Pituba, Salvador - BA, 41810-011",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 33,
+    "nome": "Escola Recanto de Fadas | Educação Infantil, Fundamental I e Bilíngue em Pituba, Salvador BA",
+    "nicho": "Escola Particular",
+    "wa": "5571991157175",
+    "tel": "(71) 99115-7175",
+    "site": "http://recantodefadas.com.br",
+    "end": "R. dos Radialistas, 85 - Pituba, Salvador - BA, 41820-110",
     "status": "A prospectar",
     "notas": ""
   },
@@ -671,23 +675,23 @@ const DEFAULT_DATA = [
   },
   {
     "id": 35,
+    "nome": "Colégio São Paulo",
+    "nicho": "Escola Particular",
+    "wa": "557121074600",
+    "tel": "(71) 2107-4600",
+    "site": "http://www.cspba.com.br",
+    "end": "R. Luís Portela da Silva, 628 - Itaigara, Salvador - BA, 41815-290",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 36,
     "nome": "Colégio Oficina",
     "nicho": "Escola Particular",
     "wa": "557132704100",
     "tel": "(71) 3270-4100",
     "site": "http://www.colegiooficina.com.br",
     "end": "Rua Miguel Navarro Y Cañizares, 423 - Pituba, Salvador - BA, 41810-215",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 36,
-    "nome": "Colégio Anchieta",
-    "nicho": "Escola Particular",
-    "wa": "557121079000",
-    "tel": "(71) 2107-9000",
-    "site": "http://www.anchietaba.com.br",
-    "end": "Praça Padre Anchieta, 126 - Pituba, Salvador - BA, 41810-830",
     "status": "A prospectar",
     "notas": ""
   },
@@ -704,6 +708,17 @@ const DEFAULT_DATA = [
   },
   {
     "id": 38,
+    "nome": "Colégio Anchieta",
+    "nicho": "Escola Particular",
+    "wa": "557121079000",
+    "tel": "(71) 2107-9000",
+    "site": "http://www.anchietaba.com.br",
+    "end": "Praça Padre Anchieta, 126 - Pituba, Salvador - BA, 41810-830",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 39,
     "nome": "Colégio Versari",
     "nicho": "Escola Particular",
     "wa": "5571996215564",
@@ -714,24 +729,13 @@ const DEFAULT_DATA = [
     "notas": ""
   },
   {
-    "id": 39,
+    "id": 40,
     "nome": "Colegio Integral - Portaria Principal",
     "nicho": "Escola Particular",
     "wa": "557121015000",
     "tel": "(71) 2101-5000",
     "site": "http://www.integralweb.com.br",
     "end": "R. Fernando Menezes de Góes, 570 - Pituba, Salvador - BA, 41810-700",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 40,
-    "nome": "Colégio São Paulo",
-    "nicho": "Escola Particular",
-    "wa": "557121074600",
-    "tel": "(71) 2107-4600",
-    "site": "http://www.cspba.com.br",
-    "end": "R. Luís Portela da Silva, 628 - Itaigara, Salvador - BA, 41815-290",
     "status": "A prospectar",
     "notas": ""
   },
@@ -748,6 +752,17 @@ const DEFAULT_DATA = [
   },
   {
     "id": 42,
+    "nome": "Alpha Fitness - Costa Azul",
+    "nicho": "Academia / CrossFit",
+    "wa": "557132724966",
+    "tel": "(71) 3272-4966",
+    "site": "http://www.redealphafitness.com.br",
+    "end": "R. Prof. Cassilandro Barbuda, 620 - Costa Azul, Salvador - BA, 41760-110",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 43,
     "nome": "Alcateia CrossFit",
     "nicho": "Academia / CrossFit",
     "wa": "557130373839",
@@ -758,24 +773,13 @@ const DEFAULT_DATA = [
     "notas": ""
   },
   {
-    "id": 43,
+    "id": 44,
     "nome": "Aldeia Medicina e Esporte - Unidade Costa Azul",
     "nicho": "Academia / CrossFit",
     "wa": "5571981493717",
     "tel": "(71) 98149-3717",
     "site": "http://www.sejaaldeia.com",
     "end": "R. Dr. Boureau, 386 - Costa Azul, Salvador - BA, 41760-050",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 44,
-    "nome": "Alpha Fitness - Costa Azul",
-    "nicho": "Academia / CrossFit",
-    "wa": "557132724966",
-    "tel": "(71) 3272-4966",
-    "site": "http://www.redealphafitness.com.br",
-    "end": "R. Prof. Cassilandro Barbuda, 620 - Costa Azul, Salvador - BA, 41760-110",
     "status": "A prospectar",
     "notas": ""
   },
@@ -792,17 +796,6 @@ const DEFAULT_DATA = [
   },
   {
     "id": 46,
-    "nome": "INSPIRE CT",
-    "nicho": "Academia / CrossFit",
-    "wa": "5571997297699",
-    "tel": "(71) 99729-7699",
-    "site": "https://instagram.com/inspiretreinamento?igshid=YmMyMTA2M2Y=",
-    "end": "R. São Paulo, 313 - Pituba, Salvador - BA, 41830-180",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 47,
     "nome": "Crossfit Elite",
     "nicho": "Academia / CrossFit",
     "wa": "5571983929727",
@@ -813,7 +806,7 @@ const DEFAULT_DATA = [
     "notas": ""
   },
   {
-    "id": 48,
+    "id": 47,
     "nome": "Maral Crossfit - Armação",
     "nicho": "Academia / CrossFit",
     "wa": "557130524711",
@@ -824,7 +817,7 @@ const DEFAULT_DATA = [
     "notas": "⚠ Sem site — boa oportunidade!"
   },
   {
-    "id": 49,
+    "id": 48,
     "nome": "Mix Cross Training Boca do Rio",
     "nicho": "Academia / CrossFit",
     "wa": "5571986798463",
@@ -835,13 +828,24 @@ const DEFAULT_DATA = [
     "notas": "⚠ Sem site — boa oportunidade!"
   },
   {
-    "id": 50,
+    "id": 49,
     "nome": "Alcateia CrossFit",
     "nicho": "Academia / CrossFit",
     "wa": "557130229211",
     "tel": "(71) 3022-9211",
     "site": "https://www.instagram.com/alcateiacrossfit",
     "end": "Alameda Pádua, 238 - Pituba, Salvador - BA, 41830-480",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 50,
+    "nome": "INSPIRE CT",
+    "nicho": "Academia / CrossFit",
+    "wa": "5571997297699",
+    "tel": "(71) 99729-7699",
+    "site": "https://instagram.com/inspiretreinamento?igshid=YmMyMTA2M2Y=",
+    "end": "R. São Paulo, 313 - Pituba, Salvador - BA, 41830-180",
     "status": "A prospectar",
     "notas": ""
   },
@@ -891,17 +895,6 @@ const DEFAULT_DATA = [
   },
   {
     "id": 55,
-    "nome": "DENTISTA SALVADOR",
-    "nicho": "Odontologia",
-    "wa": "5571996197601",
-    "tel": "(71) 99619-7601",
-    "site": "https://dentistasalvador.com.br",
-    "end": "R. Dr. José Peroba - STIEP, Salvador - BA, 41770-235",
-    "status": "A prospectar",
-    "notas": ""
-  },
-  {
-    "id": 56,
     "nome": "Núcleo Odontológico de Salvador",
     "nicho": "Odontologia",
     "wa": "557134888861",
@@ -912,24 +905,35 @@ const DEFAULT_DATA = [
     "notas": ""
   },
   {
-    "id": 57,
-    "nome": "Oral Clean Odontologia Digital - Drª Luciana Sarno",
+    "id": 56,
+    "nome": "DENTISTA SALVADOR",
     "nicho": "Odontologia",
-    "wa": "557133414057",
-    "tel": "(71) 3341-4057",
-    "site": "https://www.adoromeusorriso.com.br",
-    "end": "Av. Tancredo Neves, 1632 sala 711 Edifício Salvador Trade Center - Torre Norte - Caminho das Árvores, Salvador - BA, 41820-915",
+    "wa": "5571996197601",
+    "tel": "(71) 99619-7601",
+    "site": "https://dentistasalvador.com.br",
+    "end": "R. Dr. José Peroba - STIEP, Salvador - BA, 41770-235",
     "status": "A prospectar",
     "notas": ""
   },
   {
-    "id": 58,
+    "id": 57,
     "nome": "Drª Taiane Santos | Clínica Odontológica ELO Reabilitação Oral e Estética - Dentista em Salvador-BA",
     "nicho": "Odontologia",
     "wa": "5571983427588",
     "tel": "(71) 98342-7588",
     "site": "https://eloreabilitacaooral.my.canva.site",
     "end": "1459 ITC, International Trade Center - Salvador - Rua Arthur de Azevêdo Machado - STIEP, Salvador - BA, 41770-790",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 58,
+    "nome": "Oral Clean Odontologia Digital - Drª Luciana Sarno",
+    "nicho": "Odontologia",
+    "wa": "557133414057",
+    "tel": "(71) 3341-4057",
+    "site": "https://www.adoromeusorriso.com.br",
+    "end": "Av. Tancredo Neves, 1632 sala 711 Edifício Salvador Trade Center - Torre Norte - Caminho das Árvores, Salvador - BA, 41820-915",
     "status": "A prospectar",
     "notas": ""
   },
@@ -1056,12 +1060,122 @@ const DEFAULT_DATA = [
   },
   {
     "id": 70,
-    "nome": "CONTADOR MARCOS NUNES | Contador em Salvador",
+    "nome": "Escritório de Contabilidade em Salvador - Consil Soluções em Contabilidade",
     "nicho": "Contabilidade",
-    "wa": "5571996835384",
-    "tel": "(71) 99683-5384",
-    "site": "https://www.instagram.com/contador.marcosnunes",
-    "end": "Av. Tancredo Neves - Caminho das Árvores, Salvador - BA, 41820-020",
+    "wa": "5571991022576",
+    "tel": "(71) 99102-2576",
+    "site": "http://www.consilsolucoes.com.br",
+    "end": "Av Tancredo Neves, 2227 salvador prime H1 - 704 - Caminho das Árvores, Salvador - BA, 41820-021",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 71,
+    "nome": "Barbearia Dom Barbudo Barber Club",
+    "nicho": "Barbearia",
+    "wa": "5571982617468",
+    "tel": "(71) 98261-7468",
+    "site": "https://smartbarbers.com.br/agendar/barbearia-dom-barbudo",
+    "end": "Ed. Salvador - Av. Tancredo Neves, 2227 - Prime, Térreo - Caminho das Árvores, Salvador - BA, 41820-021",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 72,
+    "nome": "Barbearia Blue Barber Beer",
+    "nicho": "Barbearia",
+    "wa": "5571994143449",
+    "tel": "(71) 99414-3449",
+    "site": "https://sites.appbarber.com.br/bluebarberbeer-tkfh",
+    "end": "R. Dr. Augusto Lopes Pontes, 02 - Lj 02 - Costa Azul, Salvador - BA, 41760-035",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 73,
+    "nome": "Bolivian Barber Pituba",
+    "nicho": "Barbearia",
+    "wa": "5571981042594",
+    "tel": "(71) 98104-2594",
+    "site": "https://sites.appbarber.com.br/bolivianbarberp-gdig?fbclid=PAVERFWAQ6Gi9leHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadu28r9Um776dB5yelPEOfYiB1hA0a_0kKnki5brAwAVSem02vSnRfT0j8kIg_aem_qqp64bvO31wZWfio9K1_oQ",
+    "end": "Mc Empresarial - Av. Paulo VI, 993 - Loja 02 - Pituba, Salvador - BA, 41810-000",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 74,
+    "nome": "Pituba Barbershop",
+    "nicho": "Barbearia",
+    "wa": "5571983460767",
+    "tel": "(71) 98346-0767",
+    "site": "https://wa.me/557183460767",
+    "end": "Av. Octávio Mangabeira, 1945 - Pituba, Salvador - BA, 41830-050",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 75,
+    "nome": "Barbearia Gentleman",
+    "nicho": "Barbearia",
+    "wa": "557133421851",
+    "tel": "(71) 3342-1851",
+    "site": "https://www.trendbarber.com/barbearia/ba/salvador-barbearia-gentleman-shopping-salvador",
+    "end": "Av. Tancredo Neves, 3133 - Caminho das Árvores, Salvador - BA, 41820-021",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 76,
+    "nome": "Barbero Club Shopping da Bahia",
+    "nicho": "Barbearia",
+    "wa": "5571992696064",
+    "tel": "(71) 99269-6064",
+    "site": "",
+    "end": "2° Piso Shopping da Bahia - Av. Tancredo Neves, 148 - loja Q 37 - Caminho das Árvores, Salvador - BA, 41820-908",
+    "status": "A prospectar",
+    "notas": "⚠ Sem site — boa oportunidade!"
+  },
+  {
+    "id": 77,
+    "nome": "Barbearia Alfa Master",
+    "nicho": "Barbearia",
+    "wa": "5571992155125",
+    "tel": "(71) 99215-5125",
+    "site": "https://www.alfamasterbarber.com.br",
+    "end": "R. Dr. José Peroba, 325 - STIEP, Salvador - BA, 41770-235",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 78,
+    "nome": "Meu Barbeiro - Barbearia Pituba Salvador",
+    "nicho": "Barbearia",
+    "wa": "5571996201926",
+    "tel": "(71) 99620-1926",
+    "site": "https://www.instagram.com/meubarbeiro_",
+    "end": "R. dos Maçons, 121 - Loja 1 - Pituba, Salvador - BA, 40810-640",
+    "status": "A prospectar",
+    "notas": ""
+  },
+  {
+    "id": 79,
+    "nome": "Stiep Barbershop",
+    "nicho": "Barbearia",
+    "wa": "5571982002576",
+    "tel": "(71) 98200-2576",
+    "site": "",
+    "end": "Av. Prof. Manoel Ribeiro, 1292 - STIEP, Salvador - BA, 41770-095",
+    "status": "A prospectar",
+    "notas": "⚠ Sem site — boa oportunidade!"
+  },
+  {
+    "id": 80,
+    "nome": "Barbearia Alpha Clube Aquários",
+    "nicho": "Barbearia",
+    "wa": "5571992901085",
+    "tel": "(71) 99290-1085",
+    "site": "https://www.instagram.com/barbeariaalphaclubee?igsh=MThwY2Y2NXY3MGtiNQ==&utm_source=qr",
+    "end": "R. Magno Valente, 502 - Pituba, Salvador - BA, 41810-620",
     "status": "A prospectar",
     "notas": ""
   }
